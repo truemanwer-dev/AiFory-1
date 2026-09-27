@@ -14,7 +14,7 @@ import {
   TrendUp,
 } from '@phosphor-icons/react';
 
-const TG_URL = "https://t.me/+ZHeRkICBUr02MDhk";
+const TG_URL = "https://t.me/+OvfEjjZhYCk1M2M0";
 
 const FAQ_ITEMS = [
   { q: "Как происходит обмен?", a: "Вы пишете нам в Telegram, согласовываем курс, сумму и время встречи. Далее встречаемся лично и проводим обмен на месте." },
@@ -271,7 +271,6 @@ export default function App() {
               </div>
               <div className="features-grid">
                 <FeatureCard
-                  metric="0%"
                   icon={<ShieldCheck size={28} weight="duotone" />}
                   title="Только личная встреча"
                   desc="Полная защита сделки. Никаких предоплат и переводов заранее."
