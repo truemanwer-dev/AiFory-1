@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+ъimport React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import {
   ShieldCheck,
@@ -13,6 +13,7 @@ import {
   Globe,
   TrendUp,
 } from '@phosphor-icons/react';
+import Preloader from './components/Preloader';
 
 const TG_URL = "https://t.me/+OvfEjjZhYCk1M2M0";
 
@@ -160,10 +161,17 @@ function FaqRow({ item, idx, isOpen, onToggle }) {
 export default function App() {
   const [openFaq, setOpenFaq] = useState(0);
   const [onlineManagers] = useState(3);
+  const [loading, setLoading] = useState(true);
   const toggleFaq = (i) => setOpenFaq(openFaq === i ? null : i);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1800);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="app">
+      <Preloader visible={loading} />
       <div className="backdrop" />
       <div className="corner-glow corner-tl" />
       <div className="corner-glow corner-br" />
@@ -188,11 +196,11 @@ export default function App() {
                   <span>Премиальный обменный сервис</span>
                 </div>
                 <h1 className="hero-h1">
-                  Обмен криптовалют
+                  Обмен
                   <span className="h1-accent"> на лучших условиях</span>
                 </h1>
                 <p className="hero-lead">
-                  Надёжный и быстрый обмен криптовалют. Выгодные курсы, минимальные комиссии и полная безопасность сделки.
+                  Надёжный и быстрый обмен. Выгодные курсы, минимальные комиссии и полная безопасность сделки.
                 </p>
 
                 <div className="crypto-row">
@@ -402,7 +410,7 @@ export default function App() {
             <div className="footer-logo-wrap">
               <img src="/logo.png" alt="Aifory Pro" className="footer-logo" />
             </div>
-            <p className="footer-text">Премиальный обмен криптовалют с личной встречей по всей России.</p>
+            <p className="footer-text">Премиальный обмен с личной встречей по всей России.</p>
           </div>
           <div className="footer-links">
             <a href={TG_URL}>Telegram</a>

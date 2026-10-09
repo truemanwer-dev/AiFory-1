@@ -941,6 +941,96 @@ body {
   white-space: nowrap;
 }
 
+/* ===== PRELOADER ===== */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #060818;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.preloader-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.preloader-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.preloader-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.preloader-logo {
+  height: 60px;
+  width: auto;
+  background: rgba(255,255,255,0.98);
+  padding: 10px 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 40px rgba(155,108,255,0.5);
+  animation: preloaderPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes preloaderPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 40px rgba(155,108,255,0.5); }
+  50% { transform: scale(1.05); box-shadow: 0 0 60px rgba(155,108,255,0.8); }
+}
+
+.preloader-spinner {
+  display: flex;
+  gap: 8px;
+}
+
+.preloader-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #C5A7FF, #8B5CF6);
+  box-shadow: 0 0 16px rgba(139,92,246,0.9);
+  animation: preloaderDot 1.4s ease-in-out infinite;
+}
+
+.preloader-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.preloader-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes preloaderDot {
+  0%, 80%, 100% {
+    transform: scale(0.6);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+.preloader-text {
+  font-size: 14px;
+  color: #94a3b8;
+  letter-spacing: 0.05em;
+  animation: preloaderText 2s ease-in-out infinite;
+}
+
+@keyframes preloaderText {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
 /* RESPONSIVE */
 @media (max-width: 1024px) {
   .hero-grid {
@@ -1036,5 +1126,15 @@ body {
   .coin {
     font-size: 26px;
     opacity: 0.1;
+  }
+
+  .preloader-logo {
+    height: 48px;
+    padding: 8px 16px;
+  }
+
+  .preloader-dot {
+    width: 10px;
+    height: 10px;
   }
 }
